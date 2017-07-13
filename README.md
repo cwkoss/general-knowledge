@@ -2,9 +2,6 @@
 
 ### TOC
 - [Construction](construction.md)
-- Permaculture
-- Climate Control
-- Soil Management
-- Software
-- Terraforming
+- [Permaculture](permaculture.md)
+- [Software](software.md)
 - [Machines](machines.md)
