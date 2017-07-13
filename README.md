@@ -1,9 +1,10 @@
 # homestead-technology
 
 ### TOC
-- Construction
-- Cultivation
+- [Construction](construction.md)
+- Permaculture
 - Climate Control
 - Soil Management
 - Software
 - Terraforming
+- [Machines](machines.md)
