@@ -1,4 +1,4 @@
-#machines
+# machines
 
 - Rostock-style cnc gardener on telephone poles erected in each corner of triangular field.  Motor at base of each pole reels in a rope which goes up the pole, over a pulley and down to the cnc head.  Likely need a separate data/power tether as well.
   - Could have hot-swappable heads to reduce weight.
