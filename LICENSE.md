@@ -1,4 +1,4 @@
-All derivative works must have this license.  Even if you do not display this license on your work, it shall apply.
+All derivative works must have this license.  Even if you do not display this license on your work, it shall apply and cannot be superceded.
 
 You can't patent this, any of the information contained, gained from the use of this, or any works derived from this, recursively ad infinitum. 
 
