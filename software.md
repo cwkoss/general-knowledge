@@ -1,0 +1,11 @@
+# software
+- plant planner app
+  - helps you plan what plants youre going to grow when where and how
+  - input your growing locations (size, sunlight, soil type, etc), desired plants, and location
+  - it uses almanacs and shit to figure out which plants should be planted where, and when you should perform different steps.
+  - notifications for when to plant, maintain, and harvest
+- opsgenie for farming
+  - make tasks for a farm that happen on a schedule, ex. water the plant once every 3 days. 
+  - someone owns this task, it will remind them to do it before, and ask them to confirm after.
+  - if a task isn't confirmed in time, a fallback person is notified that they need to pick up the original owners task
+  - tasks have props: name, interval, remind_time, completion_time, owner, completer
