@@ -1,0 +1,21 @@
+#machines
+
+- Rostock-style cnc gardener on telephone poles erected in each corner of triangular field.  Motor at base of each pole reels in a rope which goes up the pole, over a pulley and down to the cnc head.  Likely need a separate data/power tether as well.
+  - Could have hot-swappable heads to reduce weight.
+  - Probably doesn't ever need to go to max pole height, but seems like pulling the cnc head 'taut' in the center at max height may require a lot of force.
+  - Should probably have a section of the field reserved for storing the cnc heads and consumables such as compost or water.
+  - Could run easy experiments on plants: cnc can easily and precisely vary the amounts of inputs and work on a per-plant level.
+  - Qs
+    - what kind of loads would be required to hold an ex. 50 lb cnc head at any position from -1 to 10 feet from ground surface?
+    - to what extent does the length of the poles effect this?
+- 3D rostock-style crane system
+  - 3 poles, with pulleys going down to hand winches. with proper gearing and strong materials, an average person could slowly but easily manipulate heavy objects to any point in the contained 3d space.  Motors optional, but probably a good idea.  May want a block and tackle and large lever on the reel/gearing on motor.
+  - similar to rostock gardener, but remove the electronics and maybe power. 
+- chop-and-dropper
+  - handheld weedwhacker (shorter and lighter ideally) which rotates the 'blade' perpenditular to the shaft and allowing thrusting or swiping motions to be used to prune plants/bushes/trees.  Ideally, it should cut the target in the smallest pieces possible for fast soil digestion, so should maybe have a thin metal (instead of thick plastic) blade, at a high rpm. kinda dangerous.
+- refrigeration batteries
+  - zeolite packages with standard connections so they can be either 
+    - heated to drive off moisture, charging them up. (may not need connection for this step, might need vacuum)
+    - connected to tank of water (possibly under vacuum), causing evaporative cooling
+  - these systems already exist, but key question is whether the location of the endothermic phase can be separated from the exothermic phase and modularized, so 'coldness' can be stored almost as a commodity.
+  - can zeolite be substituted (or mixed) with other absorbents? silica gel?
