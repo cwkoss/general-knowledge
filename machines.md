@@ -19,3 +19,11 @@
     - connected to tank of water (possibly under vacuum), causing evaporative cooling
   - these systems already exist, but key question is whether the location of the endothermic phase can be separated from the exothermic phase and modularized, so 'coldness' can be stored almost as a commodity.
   - can zeolite be substituted (or mixed) with other absorbents? silica gel?
+- plow plane
+  - for flattening small hills or mounds on a trail or road
+  - a 4 wheeled trailer that can be pulled behind a vehicle.  in between the two sets of wheels, a 'chisel' is suspended at an ~ 45 degree angle.  
+  - When the trailer goes over a hill, if height of the surface between the two pairs of wheels is enough to reach the chisel, a portion of the soil will be shaved off.  A high-set chisel will only contact the most steep mounds, as it is lowered it should be able to catch shallower curves.  
+  - Possibly (much like a hand plane) the chisel could just be a thick flat sheet of metal, (sharpened?).  Height of chisel can be adjusted, should probably be set a few inches above the ground when the trailer is on a flat surface, and adjusted down as catches less material.
+  - As this chisel is probably going to take a lot of abuse, measures may be needed such as a blunt tip, smaller width, pointed tongs rather than a flat blade.  Hitting rocks is going to be rough, shock absorbtion on the trailer hitch and chisel fixture may be necessary.
+  - Soil will be accumulated on top of a solid blade (need an ejection mechanism), or it could immediately be dropped by a blade with relief holes or tongs.  I think several ~4-6 inch holes ~6-12 inches up from the blade edge could work well.
+  - Slowly is probably the best bet.  But, as the chisel will only contact the steepest parts of a hill, one could (with lots of shock absorbsion) drive fast over hills with the chisel set high to store momentum in the weight of the trailer and release it all into the high points at the moment of contact. A stretchy tow line is probably a good idea.  Could be useful for highly compacted soils, maybe even some rocks if you can get enough momentum and strength in the trailer and chisel.
