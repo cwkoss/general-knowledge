@@ -27,3 +27,8 @@
   - As this chisel is probably going to take a lot of abuse, measures may be needed such as a blunt tip, smaller width, pointed tongs rather than a flat blade.  Hitting rocks is going to be rough, shock absorbtion on the trailer hitch and chisel fixture may be necessary.
   - Soil will be accumulated on top of a solid blade (need an ejection mechanism), or it could immediately be dropped by a blade with relief holes or tongs.  I think several ~4-6 inch holes ~6-12 inches up from the blade edge could work well.
   - Slowly is probably the best bet.  But, as the chisel will only contact the steepest parts of a hill, one could (with lots of shock absorbsion) drive fast over hills with the chisel set high to store momentum in the weight of the trailer and release it all into the high points at the moment of contact. A stretchy tow line is probably a good idea.  Could be useful for highly compacted soils, maybe even some rocks if you can get enough momentum and strength in the trailer and chisel.
+- Turntable carve-by-light pantograph
+  - two turntables are rotationally locked.  The model is placed on front table, medium (block of wood/clay) on the back
+  - a light is placed in front of the model. based on the spacing of the light to model, you can adjust the height of the shadow on medium.
+  - remove the pieces of the medium that have light on them. Once no more light can be seen, rotate the turntable and repeat.
+  - this cannot accomodate concavities, but rough shapes of many object may be able to be copied.
