@@ -11,4 +11,4 @@ If you make a derivative work, try to let me know.  Could be cool to see what yo
 
 If you make money from a derivative work, it would be nice if you gave me some, but you don't have to.
 
-I provide no warranty and am not liable for what you do with the information or resulting works.  I am not expert, bad stuff will happen, be careful and use common sense. Perform your own risk analysis. 
+I provide no warranty and am not liable for what you do with the information or resulting works.  I am not expert, you will die, bad stuff will happen, be careful and use common sense. Perform your own risk analysis. 
