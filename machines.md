@@ -32,3 +32,7 @@
   - a light is placed in front of the model. based on the spacing of the light to model, you can adjust the height of the shadow on medium.
   - remove the pieces of the medium that have light on them. Once no more light can be seen, rotate the turntable and repeat.
   - this cannot accomodate concavities, but rough shapes of many object may be able to be copied.
+- curve cutter
+  - a flexible pair of rails, with a sliding crosspiece guide a powertool to cut a curve.  the rails are suspended from a pair of parallel vertical plates with a series of vertical slots.  the flexible rails are attached to the vertical plates with a series of knobs that can be tightened onto the plates. the tightened knobs act like the specified veritices on a curve in inkscape, they define exactly where certain points are, but the shape of the curve is 'automatically filled in'. You just set several key points, and the curve is created by the flexibility of the rail. 
+- Qs
+  - How could you create a negative from a positive with a machine?  an 'anti-copy-carver'?
