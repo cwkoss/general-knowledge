@@ -10,3 +10,5 @@
 - Compost heating
   - Pain mound
   - Could maybe be used with a sterling engine to produce power
+-Qs
+  - How tolerant are plant roots to x-ray?  Could you rotate a potted plant and repeatedly x-ray it to generate a 3-d model of the root system in slow/real time?  What other ways could you accurately image a root system while its still in soil?  Growing next to glass pane or hydroponic would give some visibility, but a 3-d video of root growth in soil would be super cool.
