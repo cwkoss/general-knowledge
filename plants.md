@@ -11,6 +11,9 @@
   - Pain mound
   - Could maybe be used with a sterling engine to produce power
 - Da vinci bridge as method of erecting giant hoop house.  Maybe one long strip of plastic sheeting per face/added length
+- Landscaping structures
+  - birdpoop harvesting mound 
+    - conical mound with a bird feeder on top.  plant the sides of the cone with various plants you want.  bird poop falls to center of mound/top of cone.  As cone is watered, will pull bird poop nutrients down to fertilize the whole cone.  Could install drip waterer at top of cone as well. hugelculture pyramid of logs could be a good support base. steeper is better, but then changing the food in the bird feeder gets harder
 - Qs
   - How tolerant are plant roots to x-ray?  Could you rotate a potted plant and repeatedly x-ray it to generate a 3-d model of the root system in slow/real time?  What other ways could you accurately image a root system while its still in soil?  Growing next to glass pane or hydroponic would give some visibility, but a 3-d video of root growth in soil would be super cool.
 - Misc
