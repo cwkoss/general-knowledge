@@ -1,3 +1,6 @@
+Based on conversation with my dad on Oct 25 2017.  He showed me video on how woodblock prints are made, in particular [this one](https://cdn.shopify.com/s/files/1/0608/2925/products/RickshawCart1_1_1024x1024.jpg) he got me.  So I was thinking about various mechanisms for translating rotational energy into a stamp-and-reload-with-ink motion.  I think making a machine that can do this as multiple distinct movements would be super cool and fun to watch, but I think with 3d printing there might be a much simpler mechanism that could work.   
+
+
 Key feature: instead of molds of the image on a flat 2d plane, make molds which create a silicone cylinder with the image wrapped around it. As paper rolls along each of multiple cylinders, each transfers one color to create the final image.
 
 Design:
