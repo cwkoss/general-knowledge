@@ -21,6 +21,6 @@
   - tasks have props: name, interval, remind_time, completion_time, Person owner, Person completer
 - Virtual Reality for mnemonics
   - A class of memory tricks uses the visualization of objects to allow you to (supposedly) more easily remember infomration.  By presenting the user with an interactive space with a particular collection of objects, it could help them form a durable memory of those items in association with each other. 
-  - See https://en.wikipedia.org/wiki/List_of_visual_mnemonics
+  - See https://en.wikipedia.org/wiki/List_of_visual_mnemonics, memory visualization techniques
 
   
