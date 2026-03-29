@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}{{ note.title or 'Untitled' }} - Perknow{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-slate-500 mb-4">
+        <a href="/browse" class="hover:text-slate-700">Browse</a>
+        <span class="mx-2">/</span>
+        <span>{{ note.title or 'Untitled' }}</span>
+    </nav>
+
+    <!-- Note Header -->
+    <header class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-start justify-between mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
+                {% if note.status == 'raw' %}
+                    bg-yellow-100 text-yellow-800
+                {% elif note.status == 'processing' %}
+                    bg-blue-100 text-blue-800
+                {% else %}
+                    bg-green-100 text-green-800
+                {% endif %}">
+                {{ note.status }}
+            </span>
+            <span class="text-sm text-slate-400">#{{ note.id }}</span>
+        </div>
+        
+        <h1 class="text-3xl font-bold text-slate-800 mb-4">
+            {{ note.title or 'Untitled Note' }}
+        </h1>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+            <span>Created: {{ note.created_at[:19] }}</span>
+            <span>Updated: {{ note.updated_at[:19] }}</span>
+        </div>
+        
+        <!-- Tags -->
+        {% if tags %}
+        <div class="mt-4 flex flex-wrap gap-2">
+            {% for tag in tags %}
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                {% if tag.ai_suggested and tag.user_approved is none %}
+                    bg-yellow-100 text-yellow-800 border border-yellow-300
+                {% elif tag.ai_suggested and tag.user_approved == 1 %}
+                    bg-blue-100 text-blue-800
+                {% else %}
+                    bg-slate-100 text-slate-700
+                {% endif %}">
+                {{ tag.tag }}
+                {% if tag.ai_suggested and tag.user_approved is none %}
+                <span class="ml-1 text-yellow-600" title="AI suggested, pending review">*</span>
+                {% endif %}
+            </span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- Note Content -->
+    <article class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="prose prose-slate max-w-none">
+            <!-- Plain text display with line breaks preserved -->
+            <div class="whitespace-pre-wrap text-slate-700 leading-relaxed">
+                {{ note.content }}
+            </div>
+        </div>
+    </article>
+
+    <!-- Outgoing Links -->
+    {% if outgoing_links %}
+    <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+            🔗 Outgoing Links
+            <span class="ml-2 text-sm text-slate-500">({{ outgoing_links|length }})</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {% for link in outgoing_links %}
+            <a href="/note/{{ link.to_note_id }}" 
+               class="flex items-center p-3 rounded-lg border hover:shadow-md transition
+               {% if link.ai_suggested and link.user_approved is none %}
+                   border-yellow-300 bg-yellow-50 hover:bg-yellow-100
+               {% else %}
+                   border-slate-200 hover:bg-slate-50
+               {% endif %}">
+                <span class="flex-1 truncate">{{ link.to_title or 'Untitled' }}</span>
+                {% if link.ai_suggested %}
+                <span class="text-xs text-slate-500 ml-2">
+                    AI • {{ "%.0f"|format(link.confidence * 100) }}%
+                </span>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Incoming Links (Backlinks) -->
+    {% if incoming_links %}
+    <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+            🔙 Backlinks
+            <span class="ml-2 text-sm text-slate-500">({{ incoming_links|length }} notes link here)</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {% for link in incoming_links %}
+            <a href="/note/{{ link.from_note_id }}" 
+               class="flex items-center p-3 rounded-lg border border-slate-200 hover:bg-slate-50 hover:shadow-md transition">
+                <span class="flex-1 truncate">{{ link.from_title or 'Untitled' }}</span>
+                {% if link.ai_suggested %}
+                <span class="text-xs text-slate-500 ml-2">
+                    AI • {{ "%.0f"|format(link.confidence * 100) }}%
+                </span>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Actions -->
+    <div class="flex flex-wrap items-center gap-4">
+        <a href="/inbox" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+            + New Note
+        </a>
+        
+        <form action="/api/notes/{{ note.id }}/export" method="post" class="inline">
+            <button type="submit" 
+                    class="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                📝 Re-export
+            </button>
+        </form>
+        
+        <a href="/review" class="text-slate-600 hover:text-slate-800 transition">
+            Go to Review →
+        </a>
+    </div>
+
+    <!-- Export Info -->
+    <div class="mt-6 p-4 bg-slate-50 rounded-lg text-sm text-slate-600">
+        <p class="font-medium mb-1">📁 Export Location:</p>
+        <code class="text-xs bg-slate-200 px-2 py-1 rounded">
+            export/inbox/{{ "%04d"|format(note.id) }}_{{ (note.title or 'untitled')[:50] }}.md
+        </code>
+    </div>
+</div>
+
+<style>
+    /* Wiki-link styling */
+    .wikilink {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dotted #2563eb;
+    }
+    .wikilink:hover {
+        background-color: #dbeafe;
+    }
+</style>
+{% endblock %}

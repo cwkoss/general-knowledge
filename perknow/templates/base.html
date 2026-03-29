@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Perknow{% endblock %}</title>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10" 
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" 
+            crossorigin="anonymous"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Transitions */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Link styling */
+        .wikilink {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #2563eb;
+        }
+        .wikilink:hover {
+            background-color: #dbeafe;
+        }
+    </style>
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-slate-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="text-xl font-bold tracking-tight">
+                        🌱 Perknow
+                    </a>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="/inbox" 
+                           class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition {% if request.url.path == '/inbox' %}bg-slate-700{% endif %}">
+                            📥 Inbox
+                        </a>
+                        <a href="/browse" 
+                           class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition {% if request.url.path == '/browse' %}bg-slate-700{% endif %}">
+                            📚 Browse
+                        </a>
+                        <a href="/review" 
+                           class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition {% if request.url.path == '/review' %}bg-slate-700{% endif %}">
+                            🔍 Review
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-xs text-slate-400">v0.1.0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-6xl">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <p class="text-center text-sm text-slate-500">
+                Perknow - Your personal knowledge garden 🌿
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50"></div>
+    
+    <script>
+        // Toast notification helper
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            toast.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg mb-2 fade-in`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Handle HTMX events for toast notifications
+        document.body.addEventListener('htmx:afterRequest', function(evt) {
+            if (evt.detail.successful) {
+                const trigger = evt.detail.elt;
+                if (trigger.dataset.successMessage) {
+                    showToast(trigger.dataset.successMessage, 'success');
+                }
+            }
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

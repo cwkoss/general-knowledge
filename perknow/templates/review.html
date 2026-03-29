@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}Review - Perknow{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-slate-800 mb-2">🔍 Review AI Suggestions</h1>
+        <p class="text-slate-600">
+            Approve or reject the AI Gardener's suggestions for links and tags.
+        </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="text-3xl font-bold text-blue-600">{{ pending_links|length }}</div>
+            <div class="text-slate-600">Pending Link Suggestions</div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="text-3xl font-bold text-green-600">{{ pending_tags|length }}</div>
+            <div class="text-slate-600">Pending Tag Suggestions</div>
+        </div>
+    </div>
+
+    <!-- Link Suggestions -->
+    <section class="mb-10">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4 flex items-center">
+            🔗 Link Suggestions
+            {% if pending_links %}
+            <span class="ml-2 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                {{ pending_links|length }}
+            </span>
+            {% endif %}
+        </h2>
+        
+        {% if pending_links %}
+        <div class="space-y-3">
+            {% for link in pending_links %}
+            <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between group hover:shadow-md transition"
+                 id="link-{{ link.id }}">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <a href="/note/{{ link.from_note_id }}" class="font-medium text-blue-600 hover:underline">
+                            {{ link.from_title or 'Untitled' }}
+                        </a>
+                        <span class="text-slate-400">→</span>
+                        <a href="/note/{{ link.to_note_id }}" class="font-medium text-blue-600 hover:underline">
+                            {{ link.to_title or 'Untitled' }}
+                        </a>
+                    </div>
+                    <div class="text-sm text-slate-500">
+                        Type: {{ link.link_type }} | 
+                        Confidence: {{ "%.0f"|format(link.confidence * 100) }}%
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <button 
+                        hx-post="/api/approve-link/{{ link.id }}"
+                        hx-target="#link-{{ link.id }}"
+                        hx-swap="outerHTML"
+                        data-success-message="Link approved!"
+                        class="bg-green-100 hover:bg-green-200 text-green-800 px-4 py-2 rounded-lg transition flex items-center space-x-1"
+                    >
+                        <span>✓</span>
+                        <span>Approve</span>
+                    </button>
+                    <button 
+                        hx-post="/api/reject-link/{{ link.id }}"
+                        hx-target="#link-{{ link.id }}"
+                        hx-swap="outerHTML"
+                        data-success-message="Link rejected"
+                        class="bg-red-100 hover:bg-red-200 text-red-800 px-4 py-2 rounded-lg transition flex items-center space-x-1"
+                    >
+                        <span>✗</span>
+                        <span>Reject</span>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="bg-slate-50 rounded-lg p-8 text-center">
+            <div class="text-4xl mb-3">✓</div>
+            <p class="text-slate-600">No pending link suggestions. The AI will suggest connections as you add more notes!</p>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Tag Suggestions -->
+    <section>
+        <h2 class="text-xl font-semibold text-slate-800 mb-4 flex items-center">
+            🏷️ Tag Suggestions
+            {% if pending_tags %}
+            <span class="ml-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                {{ pending_tags|length }}
+            </span>
+            {% endif %}
+        </h2>
+        
+        {% if pending_tags %}
+        <div class="space-y-3">
+            {% for tag in pending_tags %}
+            <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between group hover:shadow-md transition"
+                 id="tag-{{ tag.id }}">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-sm font-medium">
+                            {{ tag.tag }}
+                        </span>
+                        <span class="text-slate-400">for</span>
+                        <a href="/note/{{ tag.note_id }}" class="font-medium text-blue-600 hover:underline">
+                            {{ tag.note_title or 'Untitled' }}
+                        </a>
+                    </div>
+                    <div class="text-sm text-slate-500">
+                        Suggested by AI
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <button 
+                        hx-post="/api/approve-tag/{{ tag.id }}"
+                        hx-target="#tag-{{ tag.id }}"
+                        hx-swap="outerHTML"
+                        data-success-message="Tag approved!"
+                        class="bg-green-100 hover:bg-green-200 text-green-800 px-4 py-2 rounded-lg transition flex items-center space-x-1"
+                    >
+                        <span>✓</span>
+                        <span>Approve</span>
+                    </button>
+                    <button 
+                        hx-post="/api/reject-tag/{{ tag.id }}"
+                        hx-target="#tag-{{ tag.id }}"
+                        hx-swap="outerHTML"
+                        data-success-message="Tag rejected"
+                        class="bg-red-100 hover:bg-red-200 text-red-800 px-4 py-2 rounded-lg transition flex items-center space-x-1"
+                    >
+                        <span>✗</span>
+                        <span>Reject</span>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="bg-slate-50 rounded-lg p-8 text-center">
+            <div class="text-4xl mb-3">✓</div>
+            <p class="text-slate-600">No pending tag suggestions. Great job keeping up with your reviews!</p>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Refresh Button -->
+    <div class="mt-8 text-center">
+        <button 
+            onclick="window.location.reload()"
+            class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-lg transition"
+        >
+            🔄 Refresh Suggestions
+        </button>
+    </div>
+</div>
+
+<!-- Empty state templates for HTMX swaps -->
+<template id="approved-template">
+    <div class="bg-green-50 rounded-lg p-4 text-center fade-in">
+        <span class="text-green-600 font-medium">✓ Approved</span>
+    </div>
+</template>
+
+<template id="rejected-template">
+    <div class="bg-red-50 rounded-lg p-4 text-center fade-in">
+        <span class="text-red-600 font-medium">✗ Rejected</span>
+    </div>
+</template>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Override HTMX swap to show approved/rejected states
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        const target = evt.detail.target;
+        if (target.id && (target.id.startsWith('link-') || target.id.startsWith('tag-'))) {
+            // Check if this was a successful approval/rejection
+            const triggeringElement = evt.detail.elt;
+            const isApprove = triggeringElement.textContent.includes('Approve');
+            
+            // Replace with simple state indicator after a brief delay
+            setTimeout(() => {
+                target.style.opacity = '0.5';
+                target.innerHTML = `
+                    <div class="flex items-center justify-center py-2">
+                        <span class="${isApprove ? 'text-green-600' : 'text-red-600'} font-medium">
+                            ${isApprove ? '✓ Approved' : '✗ Rejected'}
+                        </span>
+                    </div>
+                `;
+            }, 300);
+        }
+    });
+</script>
+{% endblock %}
